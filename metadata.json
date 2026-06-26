@@ -1,0 +1,6 @@
+{
+  "name": "CivicPulse",
+  "description": "Citizens report. AI triages. Community verifies. Government acts. A hyperlocal civic issue reporting and resolution platform powered by Google Gemini and Firebase.",
+  "requestFramePermissions": ["camera", "geolocation"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

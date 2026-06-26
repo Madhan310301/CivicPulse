@@ -1,0 +1,54 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Global Catch-all safety net (Default Deny)
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Helper functions
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return isSignedIn() && request.auth.uid == userId;
+    }
+
+    function isValidId(id) {
+      return id is string && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    // --- Users Collection Rules ---
+    match /users/{userId} {
+      // Anyone can read profiles so the leaderboard and maps work for guest visitors
+      allow read: if true;
+      
+      // Allow users to register their initial profile
+      allow create: if isSignedIn() && userId == request.auth.uid;
+      
+      // Allow profile updates if signed in (both own profiles and peers/admins awarding XP)
+      allow update: if isSignedIn();
+    }
+
+    // --- Issues Collection Rules ---
+    match /issues/{issueId} {
+      // Anyone can browse issues, view detailed comments, and explore maps
+      allow read: if true;
+      
+      // Any signed-in user can file an issue under their own identity
+      allow create: if isSignedIn() && request.resource.data.reportedBy == request.auth.uid;
+
+      // Any signed-in user can update issues (e.g. for verifications, comments, or gov simulation)
+      allow update: if isSignedIn();
+    }
+
+    // --- Hotspots Collection Rules ---
+    match /hotspots/{hotspotId} {
+      // Anyone can read predictive risk hotspot alerts
+      allow read: if true;
+      allow write: if isSignedIn();
+    }
+  }
+}

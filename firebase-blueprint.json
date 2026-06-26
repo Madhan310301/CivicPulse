@@ -1,0 +1,86 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "Represents a citizen profile on the CivicPulse platform.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "description": "The unique Firebase Auth UID." },
+        "displayName": { "type": "string", "description": "The public display name of the user." },
+        "email": { "type": "string", "description": "The user email address." },
+        "xp": { "type": "integer", "description": "The current gamification experience points." },
+        "badges": { "type": "array", "items": { "type": "string" }, "description": "Earned gamification badges." },
+        "reportsCount": { "type": "integer", "description": "Total count of issues reported by this user." },
+        "verificationsCount": { "type": "integer", "description": "Total count of verifications performed by this user." },
+        "resolvedCount": { "type": "integer", "description": "Total count of user's reported issues that have been resolved." },
+        "ward": { "type": "string", "description": "The user's hyperlocal ward identifier." },
+        "joinedAt": { "type": "string", "format": "date-time", "description": "The date and time the user registered." }
+      },
+      "required": ["uid", "displayName", "email", "xp", "badges", "reportsCount", "verificationsCount", "resolvedCount", "ward", "joinedAt"]
+    },
+    "Issue": {
+      "title": "Issue",
+      "description": "A civic issue reported by a citizen, classified by AI and verified by the community.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "The Firestore document ID." },
+        "title": { "type": "string", "description": "A concise 6-word issue title." },
+        "description": { "type": "string", "description": "The detailed user description." },
+        "category": { "type": "string", "enum": ["pothole", "streetlight", "water_leak", "waste", "road_damage", "other"], "description": "The classified civic category." },
+        "severity": { "type": "integer", "description": "The severity score from 1 (low) to 5 (critical)." },
+        "status": { "type": "string", "enum": ["reported", "verified", "assigned", "in_progress", "resolved"], "description": "The ticketing status of the report." },
+        "imageUrl": { "type": "string", "description": "The Firebase Storage or base64 URL of the issue photo." },
+        "location": {
+          "type": "object",
+          "properties": {
+            "lat": { "type": "number" },
+            "lng": { "type": "number" },
+            "address": { "type": "string" }
+          },
+          "required": ["lat", "lng", "address"]
+        },
+        "ward": { "type": "string", "description": "The ward where the issue is located." },
+        "reportedBy": { "type": "string", "description": "UID of the citizen who reported it." },
+        "verifiedBy": { "type": "array", "items": { "type": "string" }, "description": "List of user UIDs who verified this issue." },
+        "verificationCount": { "type": "integer", "description": "Total count of community verifications." },
+        "department": { "type": "string", "description": "The public works department assigned to resolve the issue." },
+        "aiClassification": { "type": "object", "description": "The raw payload returned from Gemini Vision." },
+        "isDuplicate": { "type": "boolean", "description": "Whether this is classified as a duplicate." },
+        "duplicateOf": { "type": "string", "description": "UID of the original report if duplicate." },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" },
+        "resolvedAt": { "type": "string", "format": "date-time" },
+        "slaDeadline": { "type": "string", "format": "date-time", "description": "Deadline calculation (createdAt + severity hours)." }
+      },
+      "required": ["title", "description", "category", "severity", "status", "imageUrl", "location", "ward", "reportedBy", "verifiedBy", "verificationCount", "department", "isDuplicate", "createdAt", "updatedAt", "slaDeadline"]
+    },
+    "Hotspot": {
+      "title": "Hotspot",
+      "description": "Predictive AI infrastructure hotspots per ward.",
+      "type": "object",
+      "properties": {
+        "ward": { "type": "string", "description": "The ward being analyzed." },
+        "category": { "type": "string", "description": "The infrastructure category of concern." },
+        "riskScore": { "type": "number", "description": "A risk percentage or score." },
+        "predictedIssueType": { "type": "string", "description": "The type of issue predicted to occur." },
+        "basedOnReports": { "type": "integer", "description": "The sample size of historical complaints." },
+        "generatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["ward", "category", "riskScore", "predictedIssueType", "basedOnReports", "generatedAt"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "User profiles and gamification progress."
+    },
+    "/issues/{issueId}": {
+      "schema": "Issue",
+      "description": "Civic issues reported, tracked, and verified."
+    },
+    "/hotspots/{hotspotId}": {
+      "schema": "Hotspot",
+      "description": "AI-predicted infrastructure failure risk zones."
+    }
+  }
+}
