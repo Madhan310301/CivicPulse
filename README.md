@@ -293,7 +293,7 @@ civic-pulse/
 ### Madhan Kumar T
 
 [![GitHub](https://img.shields.io/badge/GitHub-Madhan310301-181717?style=for-the-badge&logo=github)](https://github.com/Madhan310301)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin)](https://linkedin.com/in/madhan-kumar-t)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin)](https://linkedin.com/in/madhankumart)
 
 <img src="https://img.shields.io/badge/B.Tech%20CSE-BIHER%20Chennai-1D9E75?style=flat-square"/>
 &nbsp;
