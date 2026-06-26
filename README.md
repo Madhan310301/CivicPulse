@@ -277,32 +277,6 @@ civic-pulse/
 
 ---
 
-## 👥 Team
-
-<table>
-<tr>
-<td align="center">
-  <img src="https://github.com/Madhan310301.png" width="80" style="border-radius:50%"/><br/>
-  <b>Madhan Kumar T</b><br/>
-  <a href="https://github.com/Madhan310301">@Madhan310301</a><br/>
-  <img src="https://img.shields.io/badge/Full%20Stack%20+%20AI-1D9E75?style=flat-square"/>
-</td>
-<td align="center">
-  <img src="https://github.com/identicons/dharshini.png" width="80" style="border-radius:50%"/><br/>
-  <b>Dharshini</b><br/>
-  <img src="https://img.shields.io/badge/Frontend%20+%20UI-185FA5?style=flat-square"/>
-</td>
-<td align="center">
-  <img src="https://github.com/identicons/eashwer.png" width="80" style="border-radius:50%"/><br/>
-  <b>Eashwer</b><br/>
-  <img src="https://img.shields.io/badge/Backend%20+%20Cloud-534AB7?style=flat-square"/>
-</td>
-</tr>
-</table>
-
----
----
-
 <div align="center">
 
 <img src="https://capsule-render.vercel.app/api?type=waving&color=0:534AB7,50:185FA5,100:1D9E75&height=100&section=footer&animation=fadeIn" width="100%"/>
