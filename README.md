@@ -15,7 +15,6 @@
 <p>
   <img src="https://img.shields.io/badge/Status-Live-1D9E75?style=for-the-badge"/>
   <img src="https://img.shields.io/badge/Cost-$0.00%2Fmonth-brightgreen?style=for-the-badge"/>
-  <img src="https://img.shields.io/badge/Hackathon-Bharatiya%20Antariksh%202026-orange?style=for-the-badge"/>
 </p>
 
 <!-- Live Demo Button -->
