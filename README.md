@@ -15,15 +15,17 @@
 <p>
   <img src="https://img.shields.io/badge/Status-Live-1D9E75?style=for-the-badge"/>
   <img src="https://img.shields.io/badge/Cost-$0.00%2Fmonth-brightgreen?style=for-the-badge"/>
+  <img src="https://img.shields.io/badge/Hackathon-Vibe2Ship%20CodingNinjas-FF6B35?style=for-the-badge"/>
+  <img src="https://img.shields.io/badge/Solo%20Build-Madhan%20Kumar%20T-534AB7?style=for-the-badge"/>
 </p>
 
-<!-- Live Demo Button -->
+<!-- Buttons -->
 <a href="https://civicpulse-xxxxxxxxxxxx-el.a.run.app">
-  <img src="https://img.shields.io/badge/🚀%20Live%20Demo-Click%20Here-1D9E75?style=for-the-badge"/>
+  <img src="https://img.shields.io/badge/Live%20Demo-Click%20Here-1D9E75?style=for-the-badge"/>
 </a>
 &nbsp;
-<a href="#-quick-start">
-  <img src="https://img.shields.io/badge/⚡%20Quick%20Start-Setup%20Guide-185FA5?style=for-the-badge"/>
+<a href="#quick-start">
+  <img src="https://img.shields.io/badge/Quick%20Start-Setup%20Guide-185FA5?style=for-the-badge"/>
 </a>
 
 <br/><br/>
@@ -32,7 +34,7 @@
 
 ---
 
-## ⚡ What is Civic Pulse?
+## What is Civic Pulse?
 
 > **Civic Pulse** is a hyperlocal civic issue reporting and resolution platform that closes the feedback loop between citizens and government — powered by Google Gemini AI, Firebase, and deployed on Google Cloud Run.
 
@@ -40,45 +42,45 @@ Most civic apps are **one-way**: citizen reports → black hole.
 **Civic Pulse is a closed loop:**
 
 ```
-📸 Citizen Reports  →  🤖 AI Triages  →  👥 Community Verifies  →  🏛️ Govt Acts  →  🔔 Citizen Notified
-        ↑_____________________________ Data feeds Prediction Model ___________________________↑
+Citizen Reports  ->  AI Triages  ->  Community Verifies  ->  Govt Acts  ->  Citizen Notified
+      ^_________________________ Data feeds Prediction Model _______________________^
 ```
 
 ---
 
-## 🎯 The Problem
+## The Problem
 
 | Pain Point | Reality |
 |---|---|
-| 🕳️ Pothole reporting | Fragmented, no feedback |
-| 💧 Water leakages | Unknown resolution status |
-| 💡 Broken streetlights | No accountability |
-| 🗑️ Waste management | Reports get lost |
-| 📊 Transparency | Citizens left in the dark |
+| Pothole reporting | Fragmented, no feedback |
+| Water leakages | Unknown resolution status |
+| Broken streetlights | No accountability |
+| Waste management | Reports get lost |
+| Transparency | Citizens left in the dark |
 
 **Civic Pulse solves all five — with AI at the core.**
 
 ---
 
-## ✨ Features
+## Features
 
 <table>
 <tr>
 <td width="50%">
 
-### 📍 Smart Reporting
+### Smart Reporting
 - One-tap photo/video upload
 - Auto GPS geo-tagging
 - Voice-to-text description
 - Works offline (queue mode)
 
-### 🤖 Gemini AI Engine
+### Gemini AI Engine
 - Auto issue classification
-- Severity scoring (1–5)
+- Severity scoring (1-5)
 - Duplicate detection
 - Predictive hotspot alerts
 
-### ✅ Community Verification
+### Community Verification
 - "I see this too" upvotes
 - Trust score system
 - Multi-photo confirmation
@@ -87,27 +89,27 @@ Most civic apps are **one-way**: citizen reports → black hole.
 </td>
 <td width="50%">
 
-### 🔄 Real-Time Tracking
+### Real-Time Tracking
 ```
-Reported ──► Verified ──► Assigned
-                              │
-                        In Progress
-                              │
-                          Resolved ✅
+Reported  ->  Verified  ->  Assigned
+                                |
+                          In Progress
+                                |
+                            Resolved
 ```
 SLA timers, push notifications, dept. routing
 
-### 📊 Impact Dashboard
+### Impact Dashboard
 - City-wide issue heatmap
 - Dept. performance scores
 - Predictive alert cards
 - Monthly ward PDF reports
 
-### 🏆 Gamification
+### Gamification
 - XP points + leaderboard
 - Ward vs. Ward challenges
 - Resolution streak badges
-- Hero of the Month 🥇
+- Hero of the Month
 
 </td>
 </tr>
@@ -115,44 +117,49 @@ SLA timers, push notifications, dept. routing
 
 ---
 
-## 🧠 AI Architecture
+## AI Architecture
 
 ```mermaid
 graph TD
-    A[📸 Citizen uploads photo + description] --> B[/api/classify]
+    A[Citizen uploads photo and description] --> B[API: classify]
     B --> C{Gemini 1.5 Flash Vision}
-    C --> D[Category: pothole / leak / light / waste]
-    C --> E[Severity: 1–5]
+    C --> D[Category: pothole, leak, light, waste]
+    C --> E[Severity Score: 1 to 5]
     C --> F[Dept. Assignment]
-    D --> G[/api/duplicate]
-    G --> H{Duplicate Check}
+    D --> G[API: duplicate check]
+    G --> H{Is it a duplicate?}
     H -- Yes --> I[Merge into existing report]
-    H -- No --> J[New issue created in Firestore]
+    H -- No --> J[New issue saved to Firestore]
     J --> K[Community Verification]
-    K --> L[/api/predict — Hotspot Analysis]
-    L --> M[📊 Predictive Alert on Dashboard]
+    K --> L[API: predict - Hotspot Analysis]
+    L --> M[Predictive Alert shown on Dashboard]
+
+    style A fill:#1D9E75,color:#fff,stroke:#0F6E56
+    style C fill:#534AB7,color:#fff,stroke:#3C3489
+    style H fill:#185FA5,color:#fff,stroke:#0C447C
+    style M fill:#E67E22,color:#fff,stroke:#CA6F1E
 ```
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 | Layer | Technology | Cost |
 |---|---|---|
-| **Frontend** | Next.js 14 + Tailwind CSS + shadcn/ui | 🟢 Free |
-| **Maps** | Leaflet.js + OpenStreetMap | 🟢 Free |
-| **AI / Vision** | Google Gemini 1.5 Flash (AI Studio) | 🟢 Free tier |
-| **Database** | Firebase Firestore (Spark plan) | 🟢 Free |
-| **Storage** | Firebase Storage (5GB) | 🟢 Free |
-| **Auth** | Firebase Auth + Google Sign-In | 🟢 Free |
-| **Deployment** | Google Cloud Run (asia-south1) | 🟢 Free tier |
-| **CI/CD** | GitHub Actions | 🟢 Free |
+| **Frontend** | Next.js 14 + Tailwind CSS + shadcn/ui | Free |
+| **Maps** | Leaflet.js + OpenStreetMap | Free |
+| **AI / Vision** | Google Gemini 1.5 Flash (AI Studio) | Free tier |
+| **Database** | Firebase Firestore (Spark plan) | Free |
+| **Storage** | Firebase Storage (5GB) | Free |
+| **Auth** | Firebase Auth + Google Sign-In | Free |
+| **Deployment** | Google Cloud Run (asia-south1) | Free tier |
+| **CI/CD** | GitHub Actions | Free |
 
 > **Total monthly cost: $0.00** — entirely within free tier limits.
 
 ---
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Prerequisites
 - Node.js 20+
@@ -211,7 +218,7 @@ Your live URL: `https://civicpulse-xxxxxxxxxxxx-el.a.run.app`
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 civic-pulse/
@@ -245,7 +252,7 @@ civic-pulse/
 
 ---
 
-## 🗺️ Roadmap
+## Roadmap
 
 - [x] Issue reporting with AI classification
 - [x] Community verification system
@@ -261,11 +268,11 @@ civic-pulse/
 
 ---
 
-## 🏆 Hackathon Submission
+## Hackathon Submission
 
-> Built for **Bharatiya Antariksh Hackathon 2026** — Challenge: Community Hero: Hyperlocal Problem Solver
+> Built solo for **Vibe2Ship - CodingNinjas Hackathon** — Challenge: Community Hero: Hyperlocal Problem Solver
 
-| Criteria | Our Approach |
+| Criteria | Approach |
 |---|---|
 | **Problem Solving & Impact** (20%) | Closes the civic feedback loop end-to-end |
 | **Agentic Depth** (20%) | Gemini autonomously classifies, deduplicates, predicts, routes |
@@ -277,11 +284,32 @@ civic-pulse/
 
 ---
 
+## Builder
+
+<div align="center">
+
+<img src="https://github.com/Madhan310301.png" width="100" style="border-radius:50%"/>
+
+### Madhan Kumar T
+
+[![GitHub](https://img.shields.io/badge/GitHub-Madhan310301-181717?style=for-the-badge&logo=github)](https://github.com/Madhan310301)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin)](https://linkedin.com/in/madhan-kumar-t)
+
+<img src="https://img.shields.io/badge/B.Tech%20CSE-BIHER%20Chennai-1D9E75?style=flat-square"/>
+&nbsp;
+<img src="https://img.shields.io/badge/Google%20Student%20Ambassador-2026-4285F4?style=flat-square&logo=google"/>
+&nbsp;
+<img src="https://img.shields.io/badge/Full%20Stack%20+%20AI-Builder-534AB7?style=flat-square"/>
+
+</div>
+
+---
+
 <div align="center">
 
 <img src="https://capsule-render.vercel.app/api?type=waving&color=0:534AB7,50:185FA5,100:1D9E75&height=100&section=footer&animation=fadeIn" width="100%"/>
 
-**Made with ❤️ in Chennai, India 🇮🇳**
+**Built solo with love in Chennai, India**
 
 <p>
   <img src="https://img.shields.io/badge/Google%20Gemini-Powered-4285F4?style=flat-square&logo=google"/>
@@ -289,8 +317,10 @@ civic-pulse/
   <img src="https://img.shields.io/badge/Firebase-Backed-FFCA28?style=flat-square&logo=firebase&logoColor=black"/>
   &nbsp;
   <img src="https://img.shields.io/badge/Cloud%20Run-Deployed-4285F4?style=flat-square&logo=googlecloud&logoColor=white"/>
+  &nbsp;
+  <img src="https://img.shields.io/badge/Vibe2Ship%20CodingNinjas-2026-FF6B35?style=flat-square"/>
 </p>
 
-*If this project helped you, drop a ⭐ — it means a lot!*
+*If this project helped you, drop a star — it means a lot!*
 
 </div>
